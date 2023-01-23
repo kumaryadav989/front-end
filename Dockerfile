@@ -8,7 +8,7 @@
 # ENTRYPOINT ["npm", "start"]
 
 # Step 1
-FROM node:13.12.0-alpine
+FROM node:12.22.12-alpine
 RUN mkdir /app
 WORKDIR /app
 COPY package.json /app
