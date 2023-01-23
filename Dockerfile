@@ -19,7 +19,7 @@ EXPOSE 3000
 
 
 FROM nginx
-COPY --from=builder /frontend/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
 COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 # Stage 2
 # FROM nginx:1.17.1-alpine
