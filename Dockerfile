@@ -17,23 +17,20 @@
 # RUN npm run build
 # EXPOSE 3000
 
-# FROM node:alpine
-# WORKDIR /app
-# COPY package.json ./
-# COPY package-lock.json ./
-# COPY ./ ./
-# RUN npm i
-# EXPOSE 3000
-# CMD ["npm", "run", "build"]
-
 FROM node:alpine
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-COPY build /usr/src/app
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
+RUN npm i
+EXPOSE 3000
+CMD ["npm", "run", "start"]
+
+
 
 # COPY package.json ./
-CMD ["npm", "start"]
-EXPOSE 3000
+# CMD ["npm", "start"]
+# EXPOSE 3000
 
 
 
