@@ -8,19 +8,25 @@
 # ENTRYPOINT ["npm", "start"]
 
 # Step 1
-FROM node:12.22.12-alpine
-RUN mkdir /app
+# FROM node:12.22.12-alpine
+# RUN mkdir /app
+# WORKDIR /app
+# COPY ./package.json 
+# RUN npm install
+# COPY . .
+# RUN npm run build
+# EXPOSE 3000
+
+FROM node:alpine
 WORKDIR /app
-COPY ./package.json 
-RUN npm install
-COPY . .
-RUN npm run build
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
+RUN npm i
 EXPOSE 3000
+CMD ["npm", "run", "start"]
 
 
-FROM nginx:1.17.1-alpine
-COPY --from=builder /app/build /usr/share/nginx/html
-COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
-# Stage 2
 # FROM nginx:1.17.1-alpine
-# COPY --from=build-step /app/build /usr/share/nginx/html
+# COPY --from=builder /app/build /usr/share/nginx/html
+# COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
