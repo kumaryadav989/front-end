@@ -1,5 +1,12 @@
-/node_modules
-/build
+# /node_modules
+# /build
+# .git
+# *.md
+# .gitignore
+
+node_modules
+npm-debug.log
+build
 .git
 *.md
 .gitignore
