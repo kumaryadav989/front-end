@@ -17,14 +17,22 @@
 # RUN npm run build
 # EXPOSE 3000
 
+# FROM node:alpine
+# WORKDIR /app
+# COPY package.json ./
+# COPY package-lock.json ./
+# COPY ./ ./
+# RUN npm i
+# EXPOSE 3000
+# CMD ["npm", "run", "build"]
+
 FROM node:alpine
-WORKDIR /app
+WORKDIR /usr/share/nginx/html
+COPY build /usr/share/nginx/html
 COPY package.json ./
-COPY package-lock.json ./
-COPY ./ ./
-RUN npm i
+CMD ["npm", "start"]
 EXPOSE 3000
-CMD ["npm", "run", "build"]
+
 
 
 # FROM nginx:1.17.1-alpine
