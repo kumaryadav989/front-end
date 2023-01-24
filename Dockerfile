@@ -11,14 +11,14 @@
 FROM node:12.22.12-alpine
 RUN mkdir /app
 WORKDIR /app
-COPY ./package.json /app
+COPY ./package.json 
 RUN npm install
 COPY . .
 RUN npm run build
 EXPOSE 3000
 
 
-FROM nginx
+FROM nginx:1.17.1-alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 # Stage 2
