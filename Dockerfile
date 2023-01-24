@@ -24,7 +24,7 @@ COPY package-lock.json ./
 COPY ./ ./
 RUN npm i
 EXPOSE 3000
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "build"]
 
 
 # FROM nginx:1.17.1-alpine
