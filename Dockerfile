@@ -8,7 +8,7 @@
 # COPY package*.json ./
 
 # # Install dependencies
-# RUN npm install joi
+# RUN npm install
 
 # # Copy the rest of the application files
 # COPY . .
@@ -23,5 +23,10 @@
 # CMD ["npm", "start"]
 
 FROM node:16.5
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
 COPY . .
+RUN npm run build
+EXPOSE 3000
 CMD ["npm", "start"]
