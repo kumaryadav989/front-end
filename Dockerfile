@@ -27,9 +27,10 @@
 # CMD ["npm", "run", "build"]
 
 FROM node:alpine
-WORKDIR /usr/share/nginx/html
-COPY build /usr/share/nginx/html
-COPY package.json ./
+WORKDIR /usr/src/app
+COPY build /usr/src/app
+
+# COPY package.json ./
 CMD ["npm", "start"]
 EXPOSE 3000
 
