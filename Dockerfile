@@ -27,6 +27,7 @@
 # CMD ["npm", "run", "build"]
 
 FROM node:alpine
+RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 COPY build /usr/src/app
 
