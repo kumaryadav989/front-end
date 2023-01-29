@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM node:alpine
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
